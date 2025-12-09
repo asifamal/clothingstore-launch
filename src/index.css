@@ -1,0 +1,285 @@
+:root {
+  --color-text-main: #ffffff;
+  --color-text-sub: #d0d0d0;
+  /* Slightly lighter for better visibility against dark bg */
+  --color-accent: #00ff41;
+  --font-serif: 'Syne', sans-serif;
+  /* Updated to Syne for Main Headers */
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #050505;
+  color: var(--color-text-main);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* Background Image Handling */
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  /* Start hidden */
+  animation: fadeIn 2s ease-out forwards;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+}
+
+/* Main Container */
+/* Scroll Behavior handled by Lenis */
+html {
+  /* scroll-behavior: smooth; Removed for Lenis */
+  height: 100%;
+}
+
+/* Sections */
+section {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  padding-top: 5vh;
+  /* Push content slightly down */
+}
+
+
+
+/* Brand Name */
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  /* A bit more breathing room */
+  margin-bottom: 2.5rem;
+  font-weight: 800;
+  /* Bolder for impact */
+  text-transform: uppercase;
+
+  opacity: 0;
+  display: block;
+}
+
+.animate-in .brand-name {
+  animation: fadeInUp 1s ease-out 0s forwards;
+}
+
+/* Subheading */
+.subheading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.35rem;
+  /* Keep wide for contrast */
+  text-transform: uppercase;
+  color: var(--color-text-sub);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+
+  opacity: 0;
+}
+
+.animate-in .subheading {
+  animation: fadeInUp 1s ease-out 0.2s forwards;
+  /* faster delay */
+}
+
+/* Main Headline */
+.headline {
+  font-family: var(--font-serif);
+  font-size: 5.5rem;
+  font-weight: 700;
+  /* Bold Syne */
+  margin-bottom: 3.5rem;
+  line-height: 1.0;
+  /* Opened up line height slightly */
+  letter-spacing: 0em;
+  /* Normal spacing */
+  opacity: 0;
+}
+
+.animate-in .headline {
+  animation: fadeInUp 1s ease-out 0.4s forwards;
+  /* faster delay */
+}
+
+/* Countdown Styles */
+.countdown-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  font-family: var(--font-sans);
+  margin-bottom: 0;
+  /* Removed margin now that footer is gone */
+  opacity: 0;
+}
+
+.animate-in .countdown-container {
+  animation: fadeInUp 1s ease-out 0.6s forwards;
+  /* faster delay */
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.countdown-value {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-text-sub);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.countdown-separator {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-top: -0.2rem;
+}
+
+/* Responsive Headline and Layout */
+@media (max-width: 1024px) {
+  .headline {
+    font-size: 4rem;
+  }
+
+  .countdown-value {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    /* remove padding-top to ensure true vertical center */
+  }
+
+  /* Adjust Hero Brand for mobile */
+  .hero-brand {
+    font-size: 4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .subheading {
+    font-size: 0.6rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .headline {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .countdown-container {
+    gap: 0.5rem;
+  }
+
+  .countdown-value {
+    font-size: 2.5rem;
+  }
+
+  .countdown-separator {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 2rem;
+    /* Even smaller for mobile */
+  }
+
+  .countdown-value {
+    font-size: 1.8rem;
+  }
+
+  .countdown-label {
+    font-size: 0.5rem;
+  }
+
+  .countdown-separator {
+    font-size: 1.5rem;
+  }
+}
+
+/* Footer / Extra Text */
