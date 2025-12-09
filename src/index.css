@@ -1,0 +1,190 @@
+:root {
+  --color-text-main: #ffffff;
+  --color-text-sub: #d0d0d0;
+  /* Slightly lighter for better visibility against dark bg */
+  --color-accent: #00ff41;
+  --font-serif: 'Bodoni Moda', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #050505;
+  color: var(--color-text-main);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* Background Image Handling */
+.background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  /* Start hidden */
+  animation: fadeIn 2s ease-out forwards;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  padding-top: 5vh;
+  /* Push content slightly down */
+}
+
+/* Brand Name */
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  letter-spacing: 0.25rem;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.5s forwards;
+}
+
+/* Subheading */
+.subheading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+  color: var(--color-text-sub);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+}
+
+/* Main Headline */
+.headline {
+  font-family: var(--font-serif);
+  font-size: 5.5rem;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+  line-height: 1.1;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1.1s forwards;
+}
+
+/* Responsive Headline */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 3rem;
+  }
+}
+
+/* Countdown Styles */
+.countdown-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  font-family: var(--font-sans);
+  margin-bottom: 4rem;
+
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1.4s forwards;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-value {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-text-sub);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.countdown-separator {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-top: -0.2rem;
+}
+
+/* Footer / Extra Text */
+.footer-text {
+  max-width: 600px;
+  color: var(--color-text-sub);
+  font-size: 1rem;
+  line-height: 1.5;
+}
