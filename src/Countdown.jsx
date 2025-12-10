@@ -5,11 +5,11 @@ const Countdown = () => {
     // In a real app, this would be a specific timestamp
     const calculateTimeLeft = () => {
         // -----------------------------------------------------------
-        // CONFIGURATION: CHANGE TARGET LAUNCH DATE HERE
-        // Format: "YYYY-MM-DD" or "YYYY-MM-DDTHH:MM:SS"
-        // Example: "2025-12-31" or "2025-12-31T23:59:59"
+        // CONFIGURATION: Set VITE_LAUNCH_DATE in your CI/CD or .env file
+        // Default: 2026-01-01
         // -----------------------------------------------------------
-        const difference = +new Date("2026-01-01") - +new Date();
+        const targetDate = import.meta.env.VITE_LAUNCH_DATE || "2026-01-01";
+        const difference = +new Date(targetDate) - +new Date();
         let timeLeft = {};
 
         if (difference > 0) {
