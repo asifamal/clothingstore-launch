@@ -7,7 +7,7 @@ import './index.css';
 function App() {
   const [introFinished, setIntroFinished] = useState(() => {
     // Check local storage to see when the intro was last shown
-    /*
+
     const lastSeen = localStorage.getItem('intro_last_seen');
     const now = Date.now();
     const cooldown = 2 * 60 * 1000; // 2 minutes in milliseconds
@@ -19,7 +19,7 @@ function App() {
 
     // Otherwise, we will show it, so update the timestamp now
     localStorage.setItem('intro_last_seen', now.toString());
-    */
+
     return false;
   });
 
