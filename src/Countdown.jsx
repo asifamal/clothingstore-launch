@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 
 const Countdown = () => {
-    // Set launch date to 30 days from now for demo purposes
-    // In a real app, this would be a specific timestamp
+    // Set launch date to 30 days from now
     const calculateTimeLeft = () => {
-        // -----------------------------------------------------------
-        // CONFIGURATION: Set VITE_LAUNCH_DATE in your CI/CD or .env file
-        // Default: 2026-01-01
-        // -----------------------------------------------------------
-        const targetDate = import.meta.env.VITE_LAUNCH_DATE || "2026-01-01";
-        const difference = +new Date(targetDate) - +new Date();
+        // Calculate target date as 30 days from now
+        const now = new Date();
+        const targetDate = new Date(now);
+        targetDate.setDate(now.getDate() + 30);
+        
+        const difference = +targetDate - +now;
         let timeLeft = {};
 
         if (difference > 0) {
