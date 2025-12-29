@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 
 const Countdown = () => {
-    // Set launch date to 30 days from now
-    const calculateTimeLeft = () => {
-        // Calculate target date as 30 days from now
+    // Calculate the target date (30 days from initial load)
+    const [targetDate] = useState(() => {
         const now = new Date();
-        const targetDate = new Date(now);
-        targetDate.setDate(now.getDate() + 30);
-        
+        const futureDate = new Date(now);
+        futureDate.setDate(now.getDate() + 30);
+        return futureDate;
+    });
+    
+    const calculateTimeLeft = () => {
+        const now = new Date();
         const difference = +targetDate - +now;
         let timeLeft = {};
 
@@ -28,11 +31,11 @@ const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     useEffect(() => {
-        const timer = setTimeout(() => {
+        const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft());
         }, 1000);
 
-        return () => clearTimeout(timer);
+        return () => clearInterval(timer);
     });
 
     const timerComponents = [];
